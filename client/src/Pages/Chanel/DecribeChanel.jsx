@@ -2,13 +2,15 @@ import React from "react";
 import { FaEdit, FaUpload } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import "./DescribeChanel.css";
-function DecribeChanel({ setEditCreateChanelBtn, Cid,setVidUploadPage }) {
+
+function DecribeChanel({ setEditCreateChanelBtn, Cid, setVidUploadPage }) {
   const chanels = useSelector((state) => state?.chanelReducers);
-
-  // console.log(Cid)
   const currentChanel = chanels.filter((c) => c._id === Cid)[0];
-
   const CurrentUser = useSelector((state) => state?.currentUserReducer);
+
+  console.log("Cid:", Cid);
+  console.log("CurrentUser ID:", CurrentUser?.result._id);
+  console.log("CurrentChanel ID:", currentChanel?._id);
 
   return (
     <div className="container3_chanel">
@@ -20,22 +22,23 @@ function DecribeChanel({ setEditCreateChanelBtn, Cid,setVidUploadPage }) {
         <p> {currentChanel?.desc} </p>
       </div>
       {CurrentUser?.result._id === currentChanel?._id && (
-        <>
-          <p
-            className="editbtn_chanel"
-            onClick={() => {
-              setEditCreateChanelBtn(true);
-            }}
-          >
-            <FaEdit />
-            <b> Edit Chanel</b>
-          </p>
-          <p className="uploadbtn_chanel" onClick={()=>setVidUploadPage(true)}>
-            <FaUpload />
-            <b> Upload Video</b>
-          </p>
-        </>
-      )}
+  <>
+    <p
+      className="editbtn_chanel"
+      onClick={() => {
+        setEditCreateChanelBtn(true);
+      }}
+    >
+      <FaEdit />
+      <b> Edit Chanel</b>
+    </p>
+    <p className="uploadbtn_chanel" onClick={() => setVidUploadPage(true)}>
+      <FaUpload />
+      <b color="white"> Upload Video</b>
+    </p>
+  </>
+)}
+
     </div>
   );
 }
