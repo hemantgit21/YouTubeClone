@@ -76,7 +76,7 @@ function VideoPage() {
               </Link>
               <div className="comments_VideoPage">
                 <h2>
-                  <u>Coments</u>
+                  <u>Comments</u>
                 </h2>
                 <Comments  videoId={vv._id}/>
               </div>
